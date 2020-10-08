@@ -1,0 +1,57 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.top-main-image {
+	background-image: url(bridge2.jpg);
+	height: 500px;
+	background-position: center;
+	background-size: cover;
+	position: relative;
+}
+
+.top-sub-text{
+	text-align: center;
+}
+
+.top-main-text {
+	text-align: center;
+	line-height: 500px;
+	font-size: 50px;
+	color: white;
+}
+
+.text-center{
+	text-align: center;
+}
+
+
+.content-image{
+	width: 200px;
+	height: 200px;
+}
+
+.top-signup-btn{
+	color: white;
+	width: 200px;
+	margin: 40px 0 20px 0;
+}
+
+.top-signin-btn{
+	color: white;
+	width: 200px;
+	margin: 40px 0 20px 0;
+}
+
+.btn-default{
+	background-color: linear-gradient(260deg, #75A9FF, #77EEFF);
+}
+
+.top-registration{
+	padding: 50px;
+	margin-top: 50px;
+}
+
+.top-signin{
+	padding: 50px;
+}
