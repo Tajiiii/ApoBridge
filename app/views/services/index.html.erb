@@ -1,2 +1,24 @@
-<h1>Services#index</h1>
-<p>Find me in app/views/services/index.html.erb</p>
+<div class="service-index">
+	<h3>サービス一覧</h3>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>サービス名</th>
+				<th>対応エリア</th>
+				<th>料金</th>
+				<th>サービス説明</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @services.each do |service| %>
+				<tr>
+					<td><%= link_to service.name, service_path(service) %></td>
+					<td><%= service.area %></td>
+					<td><%= service.price %></td>
+					<td><%= service.introduction %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

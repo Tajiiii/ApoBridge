@@ -1,2 +1,37 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="row">
+	<div class="col-lg-10">
+		<h2>マイページ</h2>
+		<h3>登録情報</h3>
+		<table class="table">
+				<tr>
+					<td>名前</td>
+					<td><%= @user.name %></td>
+				</tr>
+				<tr>
+					<td>会社名</td>
+					<td><%= @user.company %></td>
+				</tr>
+				<tr>
+					<td>電話番号</td>
+					<td><%= @user.phonenumber %></td>
+				</tr>
+				<tr>
+					<td>郵便番号</td>
+					<td><%= @user.postcode %></td>
+				</tr>
+				<tr>
+					<td>住所</td>
+					<td><%= @user.address %></td>
+				</tr>
+				<tr>
+					<td>メールアドレス</td>
+					<td><%= @user.email %></td>
+				</tr>
+			</tbody>
+		</table>
+		<%= link_to "編集する",edit_user_path(@user), class:"btn btn-success" %>
+		<%= link_to "サービスを登録する", new_service_path, class:"btn btn-warning" %>
+	</div>
+
+
+</div>

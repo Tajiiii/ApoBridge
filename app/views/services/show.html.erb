@@ -1,2 +1,32 @@
-<h1>Services#show</h1>
-<p>Find me in app/views/services/show.html.erb</p>
+<h2>サービス詳細</h2>
+
+<%= flash.now[:success] %>
+
+<div class="row">
+<div class="col-lg-4">
+		<%= attachment_image_tag(@servise, :image, :fill, 300, 300, fallback: "no_image.jpg", size: "300x300") %>
+</div>
+
+<div class="col-lg-8">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>サービス名</th>
+				<th>カテゴリー</th>
+				<th>料金</th>
+				<th>対応エリア</th>
+				<th>説明</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><%= @service.name %></td>
+				<td><%= @service.category.name %></td>
+				<td><%= @service.price %></td>
+				<td><%= @service.area %></td>
+				<td><%= @service.introduction %></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</div>

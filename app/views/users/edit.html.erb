@@ -1,2 +1,40 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="row">
+	<div class="col-lg-10">
+		<h2>マイページ</h2>
+		<h3>登録情報</h3>
+
+		<%= form_for(@user) do |f| %>
+		<table class="table">
+				<tr>
+					<td>名前</td>
+					<td><%= f.text_field :name %></td>
+				</tr>
+				<tr>
+					<td>会社名</td>
+					<td><%= f.text_field :company %></td>
+				</tr>
+				<tr>
+					<td>電話番号</td>
+					<td><%= f.text_field :phonenumber %></td>
+				</tr>
+				<tr>
+					<td>郵便番号</td>
+					<td><%= f.text_field :postcode %></td>
+				</tr>
+				<tr>
+					<td>住所</td>
+					<td><%= f.text_field :address %></td>
+				</tr>
+				<tr>
+					<td>メールアドレス</td>
+					<td><%= f.email_field :email %></td>
+				</tr>
+			</tbody>
+		</table>
+		<%= f.submit "更新する", class:"btn btn-success" %>
+
+		<% end %>
+	</div>
+
+
+</div>
