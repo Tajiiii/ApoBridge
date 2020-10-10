@@ -29,6 +29,21 @@
 			<td>説明</td>
 			<td><%= @service.introduction %></td>
 		</tr>
+		<tr>
+			<td>
+				<% if @service.liked_by?(current_user) %>
+					<%= link_to service_like_path(@service), method: :delete do %>
+						<span class="glyphicon glyphicon-star" aria-hidden="true" style="color: yellow;"></span>
+						<%= @service.likes.count %>　いいね
+						<% end %>
+				<% else %>
+						<%= link_to service_likes_path(@service), method: :post do %>
+							<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+							<%= @service.likes.count %>　いいね
+						<% end %>
+				<% end %>
+			</td>
+		</tr>
 	</table>
 	<% if user_signed_in? && current_user.id == @service.user_id %>
 		<%= link_to "編集する", edit_service_path(@service), class:"btn btn-success" %>

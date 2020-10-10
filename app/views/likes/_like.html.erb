@@ -1,0 +1,9 @@
+<div class="like_botton_on">
+	<%= link_to "キニナル", likes_delete_path(service_id: @service.id), {method: "post", remote: true} %>
+	<%= @service_count %>
+</div>
+
+<div class="like_button">
+	<%= link_to "キニナル", likes_create_path(service_id: @service.id), {method: "post", remote: true} %>
+	<%= @like_count %>
+</div>
