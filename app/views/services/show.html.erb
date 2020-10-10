@@ -4,29 +4,35 @@
 
 <div class="row">
 <div class="col-lg-4">
-		<%= attachment_image_tag(@servise, :image, :fill, 300, 300, fallback: "no_image.jpg", size: "300x300") %>
+		<%= attachment_image_tag @service, :image, :fill, 300, 300, fallback: "noimage.jpg", size: "300x300" %>
 </div>
 
 <div class="col-lg-8">
-	<table class="table">
-		<thead>
-			<tr>
-				<th>サービス名</th>
-				<th>カテゴリー</th>
-				<th>料金</th>
-				<th>対応エリア</th>
-				<th>説明</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><%= @service.name %></td>
-				<td><%= @service.category.name %></td>
-				<td><%= @service.price %></td>
-				<td><%= @service.area %></td>
-				<td><%= @service.introduction %></td>
-			</tr>
-		</tbody>
+	<table class="table" style="margin-top: 50px">
+		<tr>
+			<td>サービス名</td>
+			<td><%= @service.name %></td>
+		</tr>
+		<tr>
+			<td>カテゴリー</td>
+			<td><%= @service.category.name %></td>
+		</tr>
+		<tr>
+			<td>料金</td>
+			<td><%= @service.price %></td>
+		</tr>
+		<tr>
+			<td>対応エリア</td>
+			<td><%= @service.area %></td>
+		</tr>
+		<tr>
+			<td>説明</td>
+			<td><%= @service.introduction %></td>
+		</tr>
 	</table>
+	<% if user_signed_in? && current_user.id == @service.user_id %>
+		<%= link_to "編集する", edit_service_path(@service), class:"btn btn-success" %>
+		<%= link_to "削除する", service_path(@service), method: :delete, class:"btn btn-danger" %>
+	<% end %>
 </div>
 </div>

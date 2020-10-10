@@ -24,9 +24,55 @@ Category.create!(
 			name:"Webサイト作成・Webデザイン"
 		},
 		{
-			id: 2,
+			id:2,
+			name: "システム開発"
+		},
+		{
+			id: 3,
 			name: "広告"
 		},
+		{
+			id: 4,
+			name:"イベント・集客・Webマーケティング"
+		},
+		{
+			id: 5,
+			name: "コンサルティング"
+		},
+		{
+			id: 6,
+			name: "不動産"
+		},
+		{
+			id: 7,
+			name: "金融"
+		},
+
+		{
+			id: 8,
+			name:"保険"
+		},
+		{
+			id:9,
+			name:"教育サービス"
+		},
+		{
+			id: 10,
+			name: "人材"
+		},
+
+		{
+			id: 11,
+			name: "士業（行政書士・税理士etc.）"
+		},
+		{
+			id: 12,
+			name: "旅行"
+		},
+		{
+			id: 13,
+			name:"その他"
+		}
 
 	])
 
@@ -39,7 +85,7 @@ Service.create!(
 			category_id: 1,
 			area: "全国",
 			introduction: "おしゃれなホームページ作ります！"
-
+		
 
 		}
 	])

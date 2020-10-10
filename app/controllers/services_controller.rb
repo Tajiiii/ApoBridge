@@ -26,17 +26,28 @@ class ServicesController < ApplicationController
   end
 
   def edit
+    @service = Service.find(params[:id])
   end
 
   def update
+    @service = Service.find(params[:id])
+    if @service.update(service_params)
+      flash[:success] = "情報を更新しました"
+      redirect_to service_path(@service)
+    else
+      render "edit"
+    end
   end
 
   def destroy
+    @service = Service.find(params[:id])
+    @service.destroy
+    redirect_to services_path
   end
 
   private
   def service_params
-  	params.require(:service).permit(:name, :category_id, :area, :price, :introduction, :user_id)
+  	params.require(:service).permit(:name, :category_id, :area, :price, :introduction, :user_id, :image)
   end
 end
 
