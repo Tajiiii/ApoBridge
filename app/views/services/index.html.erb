@@ -1,35 +1,40 @@
-<div class="search-form">
-	<%= form_with url: "/services", method: :get, local: true do |f| %>
-		<div class="field">
-			<%= f.text_field :name %>
-			<%= f.submit "サービス名検索",  class:"btn btn-default" %> <%= link_to '一覧に戻る', services_path %>
-		</div>
-	<% end %>
+<div class="row">
+	<div class="search-form">
+		<%= form_with url: "/services", method: :get, local: true do |f| %>
+			<div class="field">
+				<%= f.text_field :name %>
+				<%= f.submit "サービス名検索",  class:"btn btn-default" %> <%= link_to '一覧に戻る', services_path %>
+			</div>
+		<% end %>
+	</div>
 </div>
 
-<div class="service-index">
-	<h3>サービス一覧</h3>
+<div class="row">
 
-	<table class="table">
-		<thead>
-			<tr>
-				<th>サービス名</th>
-				<th>対応エリア</th>
-				<th>料金</th>
-				<th>サービス説明</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			<% @services.each do |service| %>
-				<tr>
-					<td><%= link_to service.name, service_path(service) %></td>
-					<td><%= service.area %></td>
-					<td><%= service.price %></td>
-					<td><%= service.introduction %></td>
+	<div class="col-lg-3">
+		<%= render "services/categories_sidebar", categories: @categories %>
+	</div>
 
+	<div class="col-lg-8">
+		<div class="service-index">
+			<h3>サービス一覧</h3>
+
+			<table>
+
+				<tr class="service-box">
+					<% @services.each do |service| %>
+						<td>
+							<div  class="service" style="margin-left: 50px;">
+								<%= link_to service_path(service) do %>
+									<%= attachment_image_tag service, :image, :fill,200, 200, fallback: "noimage.jpg", size: "200x200" %><br>
+									<%= service.name %><br>
+									<%= service.category.name %><br>
+								<% end %>
+							</div>
+						</td>
+					<% end %>
 				</tr>
-			<% end %>
-		</tbody>
-	</table>
+			</table>
+		</div>
+	</div>
 </div>

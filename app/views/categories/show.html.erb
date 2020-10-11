@@ -1,0 +1,24 @@
+<div class="service-index-box">
+	<div class="col-lg-3">
+		<%= render "services/categories_sidebar", categories: @categories %>
+	</div>
+	<div class="col-lg-8 service-index">
+		<h2><%= @category.name %>一覧</h2>
+		<table>
+
+			<tr class="service-box">
+				<% @category.services.each do |service| %>
+					<td>
+						<div  class="service" style="margin-left: 50px;">
+							<%= link_to service_path(service) do %>
+								<%= attachment_image_tag service, :image, :fill,200, 200, fallback: "noimage.jpg", size: "200x200" %><br>
+								<%= service.name %><br>
+								<%= service.category.name %><br>
+							<% end %>
+						</div>
+					</td>
+				<% end %>
+			</tr>
+		</table>
+	</div>
+</div>

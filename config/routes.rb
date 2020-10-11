@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'categories/show'
   get 'home/top'
   root :to => 'home#top'
 
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
   resources :services, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
     resources :likes, only: [:create, :destroy]
   end
+  resources :categories, only: [:show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 end

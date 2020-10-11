@@ -8,6 +8,7 @@ class ServicesController < ApplicationController
     else
       @services = Service.all
     end
+    @categories = Category.all
   end
 
   def show

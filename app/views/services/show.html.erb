@@ -3,12 +3,12 @@
 <%= flash.now[:success] %>
 
 <div class="row">
-<div class="col-lg-4">
-		<%= attachment_image_tag @service, :image, :fill, 300, 300, fallback: "noimage.jpg", size: "300x300" %>
+<div class="col-lg-2">
+	<%= attachment_image_tag @service, :image, :fill, 200, 200, fallback: "noimage.jpg", size: "200x200" %>
 </div>
 
 <div class="col-lg-8">
-	<table class="table" style="margin-top: 50px">
+	<table class="table"  style="margin-left: 20px;">
 		<tr>
 			<td>サービス名</td>
 			<td><%= @service.name %></td>
@@ -30,6 +30,7 @@
 			<td><%= @service.introduction %></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>
 				<% if @service.liked_by?(current_user) %>
 					<%= link_to service_like_path(@service), method: :delete do %>
@@ -49,5 +50,32 @@
 		<%= link_to "編集する", edit_service_path(@service), class:"btn btn-success" %>
 		<%= link_to "削除する", service_path(@service), method: :delete, class:"btn btn-danger" %>
 	<% end %>
+</div>
+<div class="col-lg-2">
+	<table class="table">
+			<tr>
+				<%= attachment_image_tag @service.user, :image, :fill, 200, 200, fallback: "no_profile.jpg", size: "200x200" %>
+			</tr>
+			<tr>
+				<td>名前</td>
+				<td><%= @service.user.name %></td>
+			</tr>
+			<tr>
+				<td>会社名</td>
+				<td><%= @service.user.company %></td>
+			</tr>
+			<tr>
+				<td>連絡先</td>
+				<td><%= @service.user.phonenumber %></td>
+			</tr>
+			<tr>
+				<td>郵便番号</td>
+				<td><%= @service.user.postcode %></td>
+			</tr>
+			<tr>
+				<td>住所</td>
+				<td><%= @service.user.address %></td>
+			</tr>
+	</table>
 </div>
 </div>
