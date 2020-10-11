@@ -1,9 +1,13 @@
 class ServicesController < ApplicationController
   def index
-  	@services = Service.all
     @like = Like.new(user_id: @current_user_id, service_id: params[:service_id])
     @service = Service.find_by(id: @like.service_id)
     @like_count = Like.where(service_id: params[:service_id]).count
+    if params[:name]
+      @services = Service.where("name LIKE ?", "%#{params[:name]}%")
+    else
+      @services = Service.all
+    end
   end
 
   def show
