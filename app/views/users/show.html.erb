@@ -32,10 +32,16 @@
 					<td>メールアドレス</td>
 					<td><%= @user.email %></td>
 				</tr>
+				<tr>
+					<td></td>
+					<td><%= render 'users/follow_form', user: @user %></td>
+				</tr>
 			</tbody>
 		</table>
-		<%= link_to "編集する",edit_user_path(@user), class:"btn btn-success" %>
-		<%= link_to "サービスを登録する", new_service_path, class:"btn btn-warning" %>
+		<% if user_signed_in? && current_user == @user %>
+			<%= link_to "編集する",edit_user_path(@user), class:"btn btn-success" %>
+			<%= link_to "サービスを登録する", new_service_path, class:"btn btn-warning" %>
+		<% end %>
 	</div>
 
 

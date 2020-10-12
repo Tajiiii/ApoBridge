@@ -1,0 +1,26 @@
+<table class="table">
+			<tr>
+				<%= attachment_image_tag user, :image, :fill, 200, 200, fallback: "no_profile.jpg", size: "200x200" %>
+			</tr>
+			<tr>
+				<td>名前</td>
+				<td><%= link_to user.name, user_path(user) %></td>
+			</tr>
+			<tr>
+				<td>会社名</td>
+				<td><%= user.company %></td>
+			</tr>
+			<tr>
+				<td>連絡先</td>
+				<td><%= user.phonenumber %></td>
+			</tr>
+			<tr>
+				<td>郵便番号</td>
+				<td><%= user.postcode %></td>
+			</tr>
+			<tr>
+				<td>住所</td>
+				<td><%= user.address %></td>
+			</tr>
+
+	</table>

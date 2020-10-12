@@ -6,7 +6,7 @@ class ServicesController < ApplicationController
     if params[:name]
       @services = Service.where("name LIKE ?", "%#{params[:name]}%")
     else
-      @services = Service.all
+      @services = Service.all.page(params[:page]).per(9)
     end
     @categories = Category.all
   end
@@ -14,6 +14,7 @@ class ServicesController < ApplicationController
   def show
   	@service = Service.find(params[:id])
     @like_count = Like.where(service_id: params[:service_id]).count
+
   end
 
   def new

@@ -52,30 +52,6 @@
 	<% end %>
 </div>
 <div class="col-lg-2">
-	<table class="table">
-			<tr>
-				<%= attachment_image_tag @service.user, :image, :fill, 200, 200, fallback: "no_profile.jpg", size: "200x200" %>
-			</tr>
-			<tr>
-				<td>名前</td>
-				<td><%= @service.user.name %></td>
-			</tr>
-			<tr>
-				<td>会社名</td>
-				<td><%= @service.user.company %></td>
-			</tr>
-			<tr>
-				<td>連絡先</td>
-				<td><%= @service.user.phonenumber %></td>
-			</tr>
-			<tr>
-				<td>郵便番号</td>
-				<td><%= @service.user.postcode %></td>
-			</tr>
-			<tr>
-				<td>住所</td>
-				<td><%= @service.user.address %></td>
-			</tr>
-	</table>
+	<%= render 'users/user_sidebar', user: @service.user %>
 </div>
 </div>
