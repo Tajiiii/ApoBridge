@@ -19,4 +19,15 @@ class Service < ApplicationRecord
 	def user
 		return User.find_by(id: self.user_id)
 	end
+
+	has_many :notifications, dependent: :destroy
+
+	def create_notification_by(current_user)
+		notification = current_user.active_notifications.new(
+			service_id: id,
+			visited_id: user_id,
+			action: "like"
+			)
+		notification.save if notification.valid?
+	end
 end

@@ -7,17 +7,20 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit, :update, :destroy] do
     member do
-      get :following, :ollowers
+      get :following, :followers
     end
   end
   resources :relationships, only: [:create, :destroy]
   get 'users/:id/unsubscribe' => 'users#unsubscribe', as: 'user_unsubscribe'
+  
   resources :services, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
     resources :likes, only: [:create, :destroy]
   end
   resources :categories, only: [:show]
 
   resources :relationships, only: [:create, :destroy]
+
+  resources :notifications, only: [:index, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 end

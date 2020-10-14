@@ -3,7 +3,12 @@ class LikesController < ApplicationController
 		@service = Service.find(params[:service_id])
 		@like = current_user.likes.new(service_id: @service.id)
 		@like.save
-		redirect_to service_path(@service)
+		@service = Service.find(params[:service_id])
+		@service.create_notification_by(current_user)
+		respond_to do |format|
+			format.html {redirect_to request.referrer}
+			format.js
+		end
 	end
 
 	def destroy

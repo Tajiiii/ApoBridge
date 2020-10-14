@@ -17,7 +17,10 @@
         <% if user_signed_in? %>
           <li class="nav-item"><%= link_to 'マイページ', user_path(current_user.id), class:"nav-bar-link" %></li>
           <li class="nav-item"><%= link_to 'サービス一覧', services_path, class:"nav-bar-link" %></li>
-          <li class="nav-item"><%= '通知' %></li>
+          <% if unchecked_notifications.any? %>
+            <i class="fa fa-circle" style="color: gold;"></i>
+          <% end %>
+          <li class="nav-item"><%= link_to '通知', notifications_path, class:"nav-bar-link" %></li>
           <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"nav-bar-link" %></li>
         <% else %>
           <li class="nav-item"><%= link_to 'サービス一覧', services_path, class:"nav-bar-link" %></li>

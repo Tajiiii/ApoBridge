@@ -14,19 +14,29 @@ class User < ApplicationRecord
   has_many :follower_relationships, foreign_key: 'following_id', class_name: "Relationship", dependent: :destroy
   has_many :followers, through: :follower_relationships
 
-#フォローしようとしている other_user が自分自身ではないかを検証
-#既にフォローされている場合にフォローが重複して保存されることがなくなる
   def follow!(other_user)
   		following_relationships.create!(following_id: other_user.id)
   end
-#フォローがあればアンフォローする
-#relationship が存在すれば destroyする
+
   def unfollow!(other_user)
     following_relationships.find_by(following_id: other_user.id).destroy
   end
 
-#フォローしている User 達を取得し、include?(other_user) によって other_user が含まれていないかを確認
   def following?(other_user)
   	following_relationships.find_by(following_id: other_user.id)
+  end
+
+  has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
+
+  def create_notification_follow!(current_user)
+    temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ?", current_user.id, id, 'follow'])
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        visited_id: id,
+        action: 'follow'
+        )
+      notification.save if notification.valid?
+    end
   end
 end
