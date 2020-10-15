@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'users/:id/unsubscribe' => 'users#unsubscribe', as: 'user_unsubscribe'
   
   resources :services, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
-    resources :likes, only: [:create, :destroy]
+    resource :likes, only: [:create, :destroy]
   end
   resources :categories, only: [:show]
 
