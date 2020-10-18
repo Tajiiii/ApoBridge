@@ -1,4 +1,4 @@
-class AddProfileImageIdTousers < ActiveRecord::Migration[5.2]
+class AddProfileImageIdToUsers < ActiveRecord::Migration[5.2]
   def change
   	add column :users, profile_image_id, :string
   end
