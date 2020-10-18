@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'comments/create'
+  get 'comments/destroy'
   get 'categories/show'
   get 'home/top'
   root :to => 'home#top'
@@ -15,6 +17,7 @@ Rails.application.routes.draw do
   
   resources :services, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
     resource :likes, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
   end
   resources :categories, only: [:show]
 

@@ -14,6 +14,7 @@ class ServicesController < ApplicationController
   def show
   	@service = Service.find(params[:id])
     @like_count = Like.where(service_id: params[:service_id]).count
+    @comment = Comment.new
 
   end
 

@@ -5,6 +5,11 @@
 <div class="row">
 <div class="col-lg-2">
 	<%= attachment_image_tag @service, :image, :fill, 200, 200, fallback: "noimage.jpg", size: "200x200" %>
+
+	<% if user_signed_in? && current_user.id == @service.user_id %>
+		<%= link_to "編集する", edit_service_path(@service), class:"btn btn-success" %><br>
+		<%= link_to "削除する", service_path(@service), method: :delete, class:"btn btn-danger" %>
+	<% end %>
 </div>
 
 <div class="col-lg-8">
@@ -33,10 +38,31 @@
 			<%= render 'likes/like', service: @service %>
 		</tr>
 	</table>
-	<% if user_signed_in? && current_user.id == @service.user_id %>
-		<%= link_to "編集する", edit_service_path(@service), class:"btn btn-success" %>
-		<%= link_to "削除する", service_path(@service), method: :delete, class:"btn btn-danger" %>
-	<% end %>
+	<div class="comment-form" style="margin-left: 20px;">
+		<h4>コメント一覧</h4>
+			<table class="table">
+				<% @service.comments.each do |comment| %>
+				<% if user_signed_in? && current_user.id == comment.user.id || current_user.id == @service.user.id %>
+					<tr>
+						<td><%= link_to user_path(comment.user), class: "user_#{comment.user.id}" do %>
+								<%= attachment_image_tag comment.user, :image, fallback: "no_profile.jpg", size: "50x50" %><br>
+								<%= comment.user.name %>
+							<% end %>
+						</td>
+						<td><%= comment.content %></td>
+					</tr>
+				<% end %>
+				<% end %>
+			</table>
+
+
+		<h4>コメント</h4>
+		<%= form_for ([@service, @comment]) do |f| %>
+			<%= f.text_area :content %>
+			<%= f.submit "送信" %>
+		<% end %>
+	</div>
+
 </div>
 <div class="col-lg-2">
 	<%= render 'users/user_sidebar', user: @service.user %>
