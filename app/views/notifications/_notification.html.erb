@@ -1,0 +1,10 @@
+<% visiter = notification.visiter %>
+<% service = notification.service %>
+
+<div class="user-view clearfix">
+	<%= link_to user_path(notification.visiter) do %>
+		<%= attachment_image_tag visiter, :image, :fill,100,100, fallback: "no_profile.jpg", size:"50x50", class:"profile-image-circle" %>
+	<% end %>
+	<%= notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)} 前)" %></span>
+	<br>
+</div>

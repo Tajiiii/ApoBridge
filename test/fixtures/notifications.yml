@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  visiter_id: MyString
+  integer: MyString
+  visited_id: 1
+  service_id: 1
+  action: MyString
+  checked: false
+
+two:
+  visiter_id: MyString
+  integer: MyString
+  visited_id: 1
+  service_id: 1
+  action: MyString
+  checked: false

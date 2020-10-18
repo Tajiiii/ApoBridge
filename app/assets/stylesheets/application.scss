@@ -15,5 +15,59 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+*{
+	font-family: 'Courier New';
+}
+
+body {
+  width: 100%;
+  height: 100%;
+}
+
+.warapper{
+	background-color: #FFC7AF;
+	min-height: 100vh;/*①高さの最小値*/
+  	position: relative;/*②相対位置*/
+}
+.container-fluid {
+	background-color: #FFAD90;
+	height: 80px;
+}
+
+.header-logo{
+	color: white;
+	font-family: 'Courier New';
+}
+
+.nav-bar-link {
+	color: white;
+	height: 80px;
+	line-height: 80px;
+}
+
+.service-box {
+	display: flex;
+  flex-wrap: wrap;
+  margin-left: 40px;
+}
+
+.service {
+	margin-left: 10px;
+	margin-bottom: 20px;
+	text-align: center;
+}
 
 
+footer {
+	width: 100%;
+	height: 100px;
+	position: absolute;
+	bottom: o;
+	text-align: center;
+	background-color: #FFAD90;
+	color: white;
+	padding: 40px 0;
+	font-size: 20px;
+	margin-bottom: -120px;
+	margin-top: 200px;
+}

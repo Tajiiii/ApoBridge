@@ -1,0 +1,38 @@
+<div class="row">
+	<h2>サービス編集</h2>
+	<%= form_for(@service) do |f| %>
+		<div class="col-lg-4">
+			<div class="new-service-image" >
+			<%= attachment_image_tag @service, :image, :fill, 300, 300, fallback: "noimage.jpg", size: "300x300" %>
+			<%= f.attachment_field :image, placeholder: "サービス画像" %>
+			</div>
+		</div>
+		<div class="col-lg-8">
+			<table class="table">
+					<tr>
+						<td>サービス名</td>
+						<td><%= f.text_field :name %></td>
+					</tr>
+					<tr>
+						<td>カテゴリー</td>
+						<td><%= f.collection_select :category_id, Category.all, :id, :name %></td>
+					</tr>
+					<tr>
+						<td>料金</td>
+						<td><%= f.text_field :price %></td>
+					</tr>
+					<tr>
+						<td>対応エリア</td>
+						<td><%= f.text_field :area %></td>
+					</tr>
+					<tr>
+						<td>サービス説明</td>
+						<td><%= f.text_area :introduction %></td>
+					</tr>
+			</table>
+			<%= f.submit "更新する", class:"btn btn-success" %>
+			<%= link_to "削除する", service_path(@service), method: :delete, class:"btn btn-danger" %>
+		</div>
+	<% end %>
+</div>
+

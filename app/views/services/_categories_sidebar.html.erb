@@ -1,0 +1,8 @@
+<div class="box">
+	<h3>カテゴリー一覧</h3>
+	<% categories.each do |category| %>
+	<table>
+		<td><%= link_to category.name, category_path(category.id) %></td>
+	</table>
+	<% end %>
+</div>

@@ -8,8 +8,36 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <header class ="navbar navbar-invase">
+    <div class="container-fluid">
+      <nav class="navbar-header">
+        <h1><%= link_to 'ApoBridge', root_path, class:"header-logo" %></h1>
+      </nav>
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <li class="nav-item"><%= link_to 'マイページ', user_path(current_user.id), class:"nav-bar-link" %></li>
+          <li class="nav-item"><%= link_to 'サービス一覧', services_path, class:"nav-bar-link" %></li>
+          <% if unchecked_notifications.any? %>
+            <i class="fa fa-circle" style="color: gold;"></i>
+          <% end %>
+          <li class="nav-item"><%= link_to '通知', notifications_path, class:"nav-bar-link" %></li>
+          <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"nav-bar-link" %></li>
+        <% else %>
+          <li class="nav-item"><%= link_to 'サービス一覧', services_path, class:"nav-bar-link" %></li>
+          <li class="nav-item"><%= link_to 'ログイン', new_user_session_path, class:"nav-bar-link" %></li>
+          <li class="nav-item"><%= link_to '新規登録',new_user_registration_path, class:"nav-bar-link" %></li>
+        <% end %>
+      </ul>
+    </div>
 
   <body>
-    <%= yield %>
+    <div class="wrapper">
+      <div class="container">
+       <%= yield %>
+      </div>
+      <footer>
+        <p clas="footer-text">© ALL rights reserved by ApoBridge.</p>
+      </footer>
+    </div>
   </body>
 </html>

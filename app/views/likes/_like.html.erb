@@ -1,0 +1,14 @@
+<td></td>
+<td class="service_<%= @service.id %>">
+	<% if current_user.liked_by?(service.id) %>
+		<%= link_to service_likes_path(service), method: :delete, remote: true do %>
+			<span class="glyphicon glyphicon-star" aria-hidden="true" style="color: yellow;"></span>
+			<%= service.likes.count %>
+		<% end %>
+	<% else %>
+		<%= link_to service_likes_path(service), method: :post, remote: true do %>
+			<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+			<%= service.likes.count %>
+		<% end %>
+	<% end %>
+</td>

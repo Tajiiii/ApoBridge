@@ -1,2 +1,29 @@
-<h1>Services#new</h1>
-<p>Find me in app/views/services/new.html.erb</p>
+<h2>新規サービス登録</h2>
+
+<%= form_for(@service) do |f| %>
+<div class="col-lg-4">
+	<div class="new-service-image" style="margin-top: 30px;">
+		<%= attachment_image_tag @service, :image, :fill, 300, 300, fallback: "noimage.jpg", size: "300x300" %>
+		<br>
+		<%= f.attachment_field :image, placeholder: "サービス画像" %>
+	</div>
+</div>
+<div class="col-lg-8">
+	<h3>サービス名</h3>
+	<%= f.text_field :name %>
+
+	<h3>カテゴリー</h3>
+	<%= f.collection_select :category_id, Category.all, :id, :name %>
+
+	<h3>料金</h3>
+	<%= f.text_field :price %>
+
+	<h3>対応エリア</h3>
+	<%= f.text_field :area %>
+
+	<h3>サービス説明</h3>
+	<%= f.text_area :introduction %>
+
+	<br><%= f.submit '登録する', class:"btn btn-primary" %>
+</div>
+<% end %>

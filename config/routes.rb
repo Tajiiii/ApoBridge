@@ -1,16 +1,29 @@
 Rails.application.routes.draw do
+  get 'comments/create'
+  get 'comments/destroy'
+  get 'categories/show'
   get 'home/top'
   root :to => 'home#top'
-  
-  get 'home/about'
+
   devise_for :users
-  get 'users/show'
-  get 'users/edit'
-  get 'users/update'
-  get 'users/unsubscribe'
-  get 'users/destroy'
-  get 'services/index'
-  get 'services/show'
-  get 'services/new'
+
+  resources :users, only: [:show, :edit, :update, :destroy] do
+    member do
+      get :following, :followers
+    end
+  end
+  resources :relationships, only: [:create, :destroy]
+  get 'users/:id/unsubscribe' => 'users#unsubscribe', as: 'user_unsubscribe'
+  
+  resources :services, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
+    resource :likes, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
+  end
+  resources :categories, only: [:show]
+
+  resources :relationships, only: [:create, :destroy]
+
+  resources :notifications, only: [:index, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
 end
