@@ -45,10 +45,13 @@ ActiveRecord::Schema.define(version: 2020_10_15_110534) do
   end
 
   create_table "relationships", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "follower_id"
     t.integer "following_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follower_id", "following_id"], name: "index_relationships_on_follower_id_and_following_id", unique: true
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
+    t.index ["following_id"], name: "index_relationships_on_following_id"
   end
 
   create_table "services", force: :cascade do |t|
@@ -76,6 +79,7 @@ ActiveRecord::Schema.define(version: 2020_10_15_110534) do
     t.string "address", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "profile_image_id"
     t.string "image_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
