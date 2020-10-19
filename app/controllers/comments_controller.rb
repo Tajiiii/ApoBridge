@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+
+
+
   def create
   	@service = Service.find(params[:service_id])
   	@comment = current_user.comments.new(comment_params)

@@ -11,7 +11,9 @@
   <header class ="navbar navbar-invase">
     <div class="container-fluid">
       <nav class="navbar-header">
-        <h1><%= link_to 'ApoBridge', root_path, class:"header-logo" %></h1>
+        <%= link_to root_path, class:"header-logo" do %>
+          <%= image_tag 'topicon.png', :size => '60x60' %>
+        <% end %>
       </nav>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
@@ -20,6 +22,7 @@
           <% if unchecked_notifications.any? %>
             <i class="fa fa-circle" style="color: gold;"></i>
           <% end %>
+          <li class="nav-item"><%= link_to '投稿する', new_service_path, class:"nav-bar-link" %></li>
           <li class="nav-item"><%= link_to '通知', notifications_path, class:"nav-bar-link" %></li>
           <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"nav-bar-link" %></li>
         <% else %>
@@ -35,9 +38,10 @@
       <div class="container">
        <%= yield %>
       </div>
-      <footer>
-        <p clas="footer-text">© ALL rights reserved by ApoBridge.</p>
-      </footer>
+
     </div>
+    <footer>
+      <p clas="footer-text">© ALL rights reserved by ApoBridge.</p>
+    </footer>
   </body>
 </html>

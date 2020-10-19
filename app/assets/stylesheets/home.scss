@@ -3,7 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .top-main-image {
-	background-image: image-url('bridge2.jpg');
+	background-image: image-url('topbridge.jpg');
+	width: 100%;
 	height: 500px;
 	background-position: center;
 	background-size: cover;
@@ -30,28 +31,57 @@
 	width: 200px;
 	height: 200px;
 }
-
-.top-signup-btn{
-	color: white;
-	width: 200px;
-	margin: 40px 0 20px 0;
-}
+ .top-signup-btn{
+ 	display: inline-block;
+  text-decoration: none;
+  color: #FFF;
+  width: 120px;
+  height: 120px;
+  line-height: 120px;
+  border-radius: 50%;
+  text-align: center;
+  overflow: hidden;
+  background-image: linear-gradient(45deg, #709dff 0%, #91fdb7 100%);
+  transition: .4s;
+ }
 
 .top-signin-btn{
-	color: white;
-	width: 200px;
-	margin: 40px 0 20px 0;
+ 	display: inline-block;
+  text-decoration: none;
+  color: #FFF;
+  width: 120px;
+  height: 120px;
+  line-height: 120px;
+  border-radius: 50%;
+  text-align: center;
+  overflow: hidden;
+  background-image: linear-gradient(45deg, #709dff 0%, #91fdb7 100%);
+  transition: .4s;
 }
 
-.btn-default{
-	background-color: linear-gradient(260deg, #75A9FF, #77EEFF);
+.top-title{
+	margin:100px 0;
+	font-weight: bolder;
+	padding-bottom: 10px;
+	border-bottom: 2px solid #3399FF;
 }
 
 .top-registration{
 	padding: 50px;
-	margin-top: 50px;
 }
 
 .top-signin{
 	padding: 50px;
+}
+
+.box-text-area{
+	margin: 100px auto;
+}
+
+.top-registration{
+	margin-bottom: 50px;
+}
+
+.top-about{
+	margin-bottom: 50px;
 }

@@ -1,4 +1,13 @@
 class ServicesController < ApplicationController
+  def login_check
+    unless user_signed_in?
+       flash[:alert] = "ログインしてください"
+       redirect_to services_path
+    end
+  end
+  before_action :login_check, only: [:new, :edit, :update, :destroy, :show]
+
+
   def index
     @like = Like.new(user_id: @current_user_id, service_id: params[:service_id])
     @service = Service.find_by(id: @like.service_id)
