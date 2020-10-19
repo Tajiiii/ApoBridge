@@ -9,6 +9,10 @@ class User < ApplicationRecord
   has_many :likes
   has_many :liked_services, through: :likes, source: :service
 
+  validates :name, :email, :phonenumber, :postcode, :address, presence: true
+  validates :phonenumber, numericality: {only_integer: true}
+  validates :postcode, length: {is: 7}, numericality: {only_integer: true}
+
   def liked_by?(service_id)
     likes.where(service_id: service_id).exists?
   end

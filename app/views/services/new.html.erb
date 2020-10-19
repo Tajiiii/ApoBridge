@@ -1,6 +1,7 @@
 <h2>新規サービス登録</h2>
 
 <%= form_for(@service) do |f| %>
+<%= render 'error_messages', service: @service %>
 <div class="col-lg-4">
 	<div class="new-service-image" style="margin-top: 30px;">
 		<%= attachment_image_tag @service, :image, :fill, 300, 300, fallback: "noimage.jpg", size: "300x300" %>

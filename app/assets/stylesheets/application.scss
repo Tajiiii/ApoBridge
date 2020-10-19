@@ -16,7 +16,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 *{
-	font-family: 'Courier New';
+	font-family: inherit;
+	font-weight: 500;
 }
 
 body {
@@ -24,13 +25,12 @@ body {
   height: 100%;
 }
 
-.warapper{
-	background-color: #FFC7AF;
-	min-height: 100vh;/*①高さの最小値*/
-  	position: relative;/*②相対位置*/
+.wrapper{
+	min-height: 1000px;/*①高さの最小値*/
+  position: relative;/*②相対位置*/
 }
 .container-fluid {
-	background-color: #FFAD90;
+	background-color: #3399FF;
 	height: 80px;
 }
 
@@ -42,7 +42,7 @@ body {
 .nav-bar-link {
 	color: white;
 	height: 80px;
-	line-height: 80px;
+	text-align: center;
 }
 
 .service-box {
@@ -64,10 +64,9 @@ footer {
 	position: absolute;
 	bottom: o;
 	text-align: center;
-	background-color: #FFAD90;
+	background-color: #3399FF;
 	color: white;
 	padding: 40px 0;
 	font-size: 20px;
 	margin-bottom: -120px;
-	margin-top: 200px;
 }

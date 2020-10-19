@@ -1,0 +1,10 @@
+<% if service.errors.any? %>
+  <div class="alert alert-warning">
+    <h3><%= service.errors.count %> 個のエラーが発生しました</h3>
+    <ul>
+      <% service.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

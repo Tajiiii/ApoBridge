@@ -5,6 +5,9 @@ class Service < ApplicationRecord
 	has_many :comments, dependent: :destroy
 	has_many :likes
 
+	validates :name, :introduction, :price, :category_id, :area, presence: true
+	validates :introduction, length: {maximum: 300}
+
 	def liked_by?(user)
 		likes.where(user_id: user.id).exists?
 	end
