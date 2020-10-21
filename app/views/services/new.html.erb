@@ -9,22 +9,22 @@
 		<%= f.attachment_field :image, placeholder: "サービス画像" %>
 	</div>
 </div>
-<div class="col-lg-8">
+<div class="col-lg-4">
 	<h3>サービス名</h3>
-	<%= f.text_field :name %>
+	<%= f.text_field :name, class:"text-field" %>
 
 	<h3>カテゴリー</h3>
-	<%= f.collection_select :category_id, Category.all, :id, :name %>
+	<%= f.collection_select :category_id, Category.all, :id, :name, class:"text-field" %>
 
 	<h3>料金</h3>
-	<%= f.text_field :price %>
+	<%= f.text_field :price, class:"text-field" %>
 
 	<h3>対応エリア</h3>
-	<%= f.text_field :area %>
+	<%= f.text_field :area, class:"text-field" %>
 
 	<h3>サービス説明</h3>
-	<%= f.text_area :introduction %>
+	<%= f.text_area :introduction, class:"text-field" %>
 
-	<br><%= f.submit '登録する', class:"btn btn-primary" %>
+	<br><%= f.submit '登録する', class:"submit-btn" %>
 </div>
 <% end %>

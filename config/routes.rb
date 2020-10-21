@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     member do
       get :following, :followers
     end
+    collection do
+      get :likes
+    end
   end
   resources :relationships, only: [:create, :destroy]
   get 'users/:id/unsubscribe' => 'users#unsubscribe', as: 'user_unsubscribe'

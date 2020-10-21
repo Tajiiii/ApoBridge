@@ -1,9 +1,25 @@
-<% @user.followers.each do |user| %>
-<table>
-<tr>
-  <td>  <%= user.username %> </td>
-  <td><%= link_to '詳細', user_path(user) %></td>
-</tr>
 
-</table>
-<% end %>
+<div class="row">
+  <div class="col-lg-4" style="margin-top: 30px;">
+      <%= render 'profile', user: @user %>
+  </div>
+  <div class="col-lg-8">
+    <h3>フォロワー</h3>
+    <% if @user.followers.count == 0 %>
+      <h4>ユーザーはいません</h4>
+    <% else %>
+      <% @user.followers.each do |user| %>
+        <table class="table">
+          <tr>
+            <td><%= link_to user_path(user) do %>
+              <%= attachment_image_tag user, :image, :fill, 100, 100, fallback: "no_profile.jpg", size: "100x100" %>
+              <%= user.name %>
+              <% end %>
+            </td>
+            <td><%= user.company %></td>
+          </tr>
+        </table>
+      <% end %>
+    <% end %>
+  </div>
+</div>

@@ -26,8 +26,10 @@ body {
 }
 
 .wrapper{
-	min-height: 1000px;/*①高さの最小値*/
+	min-height: 800px;/*①高さの最小値*/
   position: relative;/*②相対位置*/
+  background-color: #FFFFDD;
+  padding-top: 30px;
 }
 .container-fluid {
 	background-color: #3399FF;
@@ -39,22 +41,30 @@ body {
 	font-family: 'Courier New';
 }
 
+.navbar {
+	margin: 0;
+}
+
 .nav-bar-link {
 	color: white;
 	height: 80px;
 	text-align: center;
 }
 
+
+.field{
+	margin: 20px 0;
+}
+
+.text-field{
+	width: 100%;
+}
+
+
 .service-box {
 	display: flex;
   flex-wrap: wrap;
   margin-left: 40px;
-}
-
-.service {
-	margin-left: 10px;
-	margin-bottom: 20px;
-	text-align: center;
 }
 
 
@@ -70,3 +80,43 @@ footer {
 	font-size: 20px;
 	margin-bottom: -120px;
 }
+
+.edit-btn{
+	width: 200px;
+	background-color: gray;
+	color: white;
+	margin-top: 10px;
+}
+
+.delete-btn{
+	width: 200px;
+	background-color: white;
+	border: 2px solid;
+	border-color: gray;
+	margin-top: 10px;
+}
+
+.signup-btn{
+	width: 100%;
+}
+
+.login-btn{
+	width: 100%;
+}
+
+.submit-btn{
+	width: 100%;
+	margin-top: 20px;
+}
+
+.service-image{
+	margin: 0 auto;
+}
+
+
+.sidebar-table{
+	margin-left:20px;
+}
+
+
+

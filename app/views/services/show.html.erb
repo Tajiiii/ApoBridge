@@ -3,17 +3,16 @@
 <%= flash.now[:success] %>
 
 <div class="row">
-<div class="col-lg-2">
-	<%= attachment_image_tag @service, :image, :fill, 200, 200, fallback: "noimage.jpg", size: "200x200" %>
-
+<div class="col-lg-3">
+		<%= attachment_image_tag @service, :image, :fill, 200, 200, fallback: "noimage.jpg", size: "200x200", class:"center-block" %>
 	<% if user_signed_in? && current_user.id == @service.user_id %>
-		<%= link_to "編集する", edit_service_path(@service), class:"btn btn-success" %><br>
-		<%= link_to "削除する", service_path(@service), method: :delete, class:"btn btn-danger" %>
+		<%= link_to "編集する", edit_service_path(@service), class:"btn edit-btn center-block" %><br>
+		<%= link_to "削除する", service_path(@service), method: :delete, class:"btn delete-btn center-block" %>
 	<% end %>
 </div>
 
-<div class="col-lg-8">
-	<table class="table"  style="margin-left: 20px;">
+<div class="col-lg-6">
+	<table class="table">
 		<tr>
 			<td>サービス名</td>
 			<td><%= @service.name %></td>
@@ -50,6 +49,10 @@
 							<% end %>
 						</td>
 						<td><%= comment.content %></td>
+						<td><% if user_signed_in? && current_user == comment.user %>
+									<%= link_to "削除する", service_comment_path(comment.service, comment), method: :delete, class:"btn" %>
+								<% end %>
+						</td>
 					</tr>
 				<% end %>
 				<% end %>
@@ -64,7 +67,7 @@
 	</div>
 
 </div>
-<div class="col-lg-2">
+<div class="col-lg-3">
 	<%= render 'users/user_sidebar', user: @service.user %>
 </div>
 </div>

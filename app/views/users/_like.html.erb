@@ -1,0 +1,11 @@
+<table class="table">
+    <% @likes.each do |like| %>
+      <% service = service.find_by(id: like.service_id) %>
+        <tr>
+          <td><%= link_to service_path(service) do %>
+                <%= attachment_image_tag service, :image, :fill,200, 200, fallback: "noimage.jpg", size: "100x100" %>
+                <%= service.name %>
+              <% end %></td>
+        </tr>
+    <% end %>
+</table>

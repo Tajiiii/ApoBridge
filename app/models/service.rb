@@ -34,4 +34,21 @@ class Service < ApplicationRecord
 			)
 		notification.save if notification.valid?
 	end
+
+
+	def create_notification_comment!(current_user, comment_id)
+		notification = current_user.active_notifications.new(
+			service_id: id,
+			comment_id: comment_id,
+			visited_id: user_id,
+			action: "comment"
+			)
+
+		#自分に対するコメントの場合は通知済みとする
+		if notification.visiter_id == notification.visited_id
+			notification.checked = true
+		end
+		notification.save if notification.valid?
+	end
+
 end
