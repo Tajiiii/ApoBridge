@@ -1,47 +1,39 @@
 <div class="row">
-	<h2>マイページ</h2>
+
 	<h3>登録情報</h3>
 	<div class="col-lg-4">
-		<div class="profile-show-image">
-			<%= attachment_image_tag @user, :image, :fill, 300, 300, fallback: "no_profile.jpg", size: "300x300" %>
-		</div>
+		<%= render 'profile', user: @user %>
 	</div>
 	<div class="col-lg-8">
+		<h3>投稿一覧</h3>
 		<table class="table">
 				<tr>
-					<td>名前</td>
-					<td><%= @user.name %></td>
+					<% @services.each do |service| %>
+						<td class="service">
+								<%= link_to service_path(service) do %>
+									<%= attachment_image_tag service, :image, :fill,200, 200, fallback: "noimage.jpg", size: "200x200" %><br>
+									<%= service.name %><br>
+									<%= service.category.name %><br>
+								<% end %>
+						</td>
+					<% end %>
 				</tr>
-				<tr>
-					<td>会社名</td>
-					<td><%= @user.company %></td>
-				</tr>
-				<tr>
-					<td>電話番号</td>
-					<td><%= @user.phonenumber %></td>
-				</tr>
-				<tr>
-					<td>郵便番号</td>
-					<td><%= @user.postcode %></td>
-				</tr>
-				<tr>
-					<td>住所</td>
-					<td><%= @user.address %></td>
-				</tr>
-				<tr>
-					<td>メールアドレス</td>
-					<td><%= @user.email %></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td><%= render 'users/follow_form', user: @user %></td>
-				</tr>
-			</tbody>
-		</table>
-		<% if user_signed_in? && current_user == @user %>
-			<%= link_to "編集する",edit_user_path(@user), class:"btn btn-success" %>
-			<%= link_to "サービスを登録する", new_service_path, class:"btn btn-warning" %>
-		<% end %>
+			</table>
+		<%= paginate @services %>
+
+			<h3>いいねしたサービス</h3>
+			<table class="table">
+				<% current_user.like_services.each do |service| %>
+						<tr>
+							<td><%= link_to service_path(service) do %>
+										<%= attachment_image_tag service, :image, :fill,200, 200, fallback: "noimage.jpg", size: "100x100" %>
+										<%= service.name %>
+									<% end %></td>
+						</tr>
+			</table>
+				<% end %>
+
+
 	</div>
 
 

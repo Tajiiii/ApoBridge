@@ -4,6 +4,7 @@ class CreateComments < ActiveRecord::Migration[5.2]
       t.text :comment
       t.integer :user_id
       t.integer :service_id
+      has_many :notifications, dependent: :destroy
 
       t.timestamps
     end

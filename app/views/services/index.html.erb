@@ -23,7 +23,7 @@
 
 				<tr class="service-box">
 					<% @services.each do |service| %>
-						<td class="service">
+						<td class="service" style="margin-left: 10px; margin-bottom: 20px; text-align: center;">
 								<%= link_to service_path(service) do %>
 									<%= attachment_image_tag service, :image, :fill,200, 200, fallback: "noimage.jpg", size: "200x200" %><br>
 									<%= service.name %><br>
