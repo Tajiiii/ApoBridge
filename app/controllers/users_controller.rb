@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @services = current_user.services.page(params[:page]).per(5)
+    @services = current_user.services.page(params[:page]).per(3)
     @likes = Like.where(user_id: @user.id)
+    @like_services = current_user.like_services.page(params[:page]).per(5)
   end
 
   def edit
@@ -12,7 +13,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:success] = "登録情報を更新しました"
+      flash[:notice] = "登録情報を更新しました"
       redirect_to user_path(@user)
     else
       render "edit"
