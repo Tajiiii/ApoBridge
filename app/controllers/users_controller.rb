@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @services = current_user.services.page(params[:page]).per(3)
+    @services = @user.services.page(params[:page]).per(3)
     @likes = Like.where(user_id: @user.id)
-    @like_services = current_user.like_services.page(params[:page]).per(5)
+    @like_services = @user.like_services.page(params[:page]).per(5)
   end
 
   def edit
