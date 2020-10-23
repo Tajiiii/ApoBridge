@@ -5,7 +5,7 @@
 		<%= form_for(@user) do |f| %>
 		<div class="col-lg-4">
 			<div class="profile-edit-image">
-				<%= attachment_image_tag @user, :image, :fill, 300, 300, fallback: "no_profile.jpg", size: "300x300" , id: "img_prev"%>
+				<%= attachment_image_tag @user, :image, size: "300x300", fallback: "no_profile.jpg", size: "300x300" , id: "img_prev"%>
 				</div>
 					<%= f.attachment_field :image, placeholder: "プロフィール画像" %>
 			</div>
