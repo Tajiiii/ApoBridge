@@ -5,7 +5,7 @@
 		<%= form_for(@user) do |f| %>
 		<div class="col-lg-4">
 			<div class="profile-edit-image">
-				<%= attachment_image_tag @user, :image, :fill, 300, 300, fallback: "no_profile.jpg", size: "300x300" %>
+				<%= attachment_image_tag @user, :image, :fill, 300, 300, fallback: "no_profile.jpg", size: "300x300" , id: "img_prev"%>
 				</div>
 					<%= f.attachment_field :image, placeholder: "プロフィール画像" %>
 			</div>
@@ -43,3 +43,16 @@
 
 
 </div>
+
+<script>
+$(function(){
+    $('#user_image').on('change', function (e) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $(".image").attr('src', e.target.result);
+    }
+    reader.readAsDataURL(e.target.files[0]);
+});
+});
+
+</script>
