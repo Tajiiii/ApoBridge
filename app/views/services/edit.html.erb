@@ -3,7 +3,7 @@
 	<%= form_for(@service) do |f| %>
 		<div class="col-lg-4">
 			<div class="new-service-image" >
-			<%= attachment_image_tag @service, :image, :fill, 300, 300, fallback: "noimage.jpg", size: "300x300" %>
+			<%= attachment_image_tag @service, :image, size: "300x300", fallback: "noimage.jpg", size: "300x300", id: "img_prev" %>
 			<%= f.attachment_field :image, placeholder: "サービス画像" %>
 			</div>
 		</div>
@@ -36,3 +36,19 @@
 	<% end %>
 </div>
 
+
+<script>
+$(function(){
+    // inputのidから情報の取得
+    $('#service_image').on('change', function (e) {
+// ここから既存の画像のurlの取得
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $(".image").attr('src', e.target.result);
+    }
+// ここまで
+    reader.readAsDataURL(e.target.files[0]); //取得したurlにアップロード画像のurlを挿入
+});
+});
+
+</script>
