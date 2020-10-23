@@ -3,7 +3,7 @@
 
 <div class="row">
 <div class="col-lg-3">
-		<%= attachment_image_tag @service, :image, :fill, 200, 200, fallback: "noimage.jpg", size: "200x200", class:"center-block" %>
+		<%= attachment_image_tag @service, :image, size: "200x200", fallback: "noimage.jpg", size: "200x200", class:"center-block" %>
 	<% if user_signed_in? && current_user.id == @service.user_id %>
 		<%= link_to "編集する", edit_service_path(@service), class:"btn edit-btn center-block" %><br>
 		<%= link_to "削除する", service_path(@service), method: :delete, class:"btn delete-btn center-block" %>
