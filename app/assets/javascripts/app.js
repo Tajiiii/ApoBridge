@@ -6,3 +6,12 @@ $(function() {
     event.preventDefault();               //aタグの機能を無効にするメソッド
   });
 });
+
+
+$(function() {
+  $('.menu-trigger').on('click', function(event) {  //menu-triggerクリック時に行われる処理
+    $(this).toggleClass('active');　　　　　　　　　 //該当のclass属性(今回はactive)がある場合にはclassが削除され、ない場合にはclassが追加される
+    $('#sp-menu').fadeToggle();                    //.fadeToggle(): 要素のフェードイン・フェードアウトを切り替えるメソッド
+    event.preventDefault();
+  });
+});

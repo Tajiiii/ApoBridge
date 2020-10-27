@@ -6,37 +6,52 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
   </head>
   <header class ="navbar">
-    <div class="container-fluid">
+    <div class="container-field">
       <nav class="navbar-header">
-        <%= link_to root_path, class:"header-logo", data: {"turbolinks" => false} do %>
+        <%= link_to root_path, class:"header-logo" do %>
           <%= image_tag 'top1.png', :size => '100x80'%>
         <% end %>
       </nav>
-      <ul class="nav navbar-nav navbar-right">
-        <% if user_signed_in? %>
-          <li class="nav-item"><%= link_to 'マイページ', user_path(current_user.id), class:"nav-bar-link" %></li>
-          <li class="nav-item"><%= link_to 'サービス一覧', services_path, class:"nav-bar-link" %></li>
-          <li class="nav-item"><%= link_to '投稿する', new_service_path, class:"nav-bar-link" %></li>
-            <li class="nav-item"><%= link_to notifications_path, class:"nav-bar-link" do %>
-              <% if unchecked_notifications.any? %>
-                <i class="fa fa-circle notification-circle" style="color: orange;"></i>  通知
-              <% else %>
-                通知
-              <% end %>
-            <% end %>
-          </li>
-          <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"nav-bar-link" %></li>
-        <% else %>
-          <li class="nav-item"><%= link_to 'サービス一覧', services_path, class:"nav-bar-link" %></li>
-          <li class="nav-item"><%= link_to 'ログイン', new_user_session_path, class:"nav-bar-link" %></li>
-          <li class="nav-item"><%= link_to '新規登録',new_user_registration_path, class:"nav-bar-link" %></li>
-        <% end %>
-      </ul>
     </div>
+
+    <div id="sp-menu">
+        <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item"><h2>MENU</h2></li>
+          <% if user_signed_in? %>
+            <li class="nav-item"><%= link_to 'マイページ', user_path(current_user.id) %></li>
+            <li class="nav-item"><%= link_to 'サービス一覧', services_path %></li>
+            <li class="nav-item"><%= link_to '投稿する', new_service_path %></li>
+              <li class="nav-item"><%= link_to notifications_path do %>
+                <% if unchecked_notifications.any? %>
+                  <i class="fa fa-circle notification-circle" style="color: orange;"></i>  通知
+                <% else %>
+                  通知
+                <% end %>
+              <% end %>
+            </li>
+            <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li class="nav-item"><%= link_to 'サービス一覧', services_path %></li>
+            <li class="nav-item"><%= link_to 'ログイン', new_user_session_path %></li>
+            <li class="nav-item"><%= link_to '新規登録',new_user_registration_path %></li>
+          <% end %>
+        </ul>
+    </div>
+
+    <div id="hm-icon">
+      <a class="menu-trigger" href="#">
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
+    </div>
+
+
+
   </header>
 
   <% if flash[:notice] %>
