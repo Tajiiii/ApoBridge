@@ -3,7 +3,7 @@
 		<%= form_with url: "/services", method: :get, local: true do |f| %>
 			<div class="field">
 				<%= f.text_field :name %>
-				<%= f.submit "サービス名検索",  class:"btn btn-default" %> <%= link_to '一覧に戻る', services_path %>
+				<%= f.submit "サービス名検索",  class:"btn btn-default" %>
 			</div>
 		<% end %>
 	</div>

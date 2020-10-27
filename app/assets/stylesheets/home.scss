@@ -75,22 +75,6 @@
 	padding: 50px;
 }
 
-.about-box{
-  display: block;
-  padding-bottom: 50ox;
-  animation: anime1 1s ease;
-}
-
-@keyframes anime1 {
-    0% {
-        opacity:  0;                /* 透明度指定 */
-        top: 50px;                  /* 位置指定 */
-    }
-    100% {
-        opacity:  1;                /* 透明度指定 */
-        top: 0;                     /* 位置指定 */
-    }
-}
 
 .box-text-area{
 	margin: 100px auto;
