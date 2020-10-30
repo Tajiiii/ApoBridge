@@ -1,1 +1,2 @@
+// .service_<%= @service.id %>この部分のHTMLだけ、renderで部分的に更新するという処理
 $('.service_<%= @service.id %>').html("<%= j(render partial: 'likes/like', locals:  {service: @service} ) %>");

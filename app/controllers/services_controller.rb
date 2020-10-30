@@ -13,6 +13,7 @@ class ServicesController < ApplicationController
     @service = Service.find_by(id: @like.service_id)
     @like_count = Like.where(service_id: params[:service_id]).count
     if params[:name]
+      #検索機能（入力した文字列に部分一致するデータ検索）
       @services = Service.where("name LIKE ?", "%#{params[:name]}%")
       @services = @services.page(params[:page]).per(9)
     else
