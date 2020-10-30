@@ -79,3 +79,6 @@ end
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'rails-i18n'
+
+gem 'minitest', group: :test
+gem 'minitest-reporters', group: :test
