@@ -1,5 +1,6 @@
 <td></td>
 <td class="service_<%= @service.id %>">
+<%# ログイン中のユーザーがいいねしているかしていないかを判断 %>
 	<% if current_user.liked_by?(service.id) %>
 		<%= link_to service_likes_path(service), method: :delete, remote: true do %>
 			<span class="glyphicon glyphicon-star" aria-hidden="true" style="color: yellow;"></span>

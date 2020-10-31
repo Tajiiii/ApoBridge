@@ -29,7 +29,9 @@
 									<%= service.name %><br>
 									<%= service.category.name %><br>
 								<% end %>
+								<span class="glyphicon glyphicon-star" style="color: yellow;"></span><%= service.likes.count %>
 						</td>
+						<td></td>
 					<% end %>
 				</tr>
 			</table>
