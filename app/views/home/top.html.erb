@@ -9,14 +9,14 @@
 				<h1 class="text-center top-title">ApoBridgeについて</h1>
 
 				<div class="row about-box">
-							<div class="col-lg-6">
+							<div class="col-lg-6 col-xs-5">
 								<div class="box-img-area">
-									<%= image_tag 'network.jpg', :size => '500x300' %>
+									<%= image_tag 'network.jpg',class:"about-img" %>
 								</div>
 							</div>
-							<div class="col-lg-6">
+							<div class="col-lg-6 col-xs-7">
 								<div class="box-text-area">
-									<h4>あなたとサービス商材の営業担当者をつなぐサイトです</h4>
+									<h4 class="about-title">あなたと営業担当者をつなぐサイトです</h4>
 									<p>あなたの会社のお悩みごとを解決できるサービスを取り扱う会社はあります！
 									様々な商材を取り扱う営業マンから情報を得てお求めのサービスを探すことができます</p>
 								</div>
@@ -24,30 +24,30 @@
 					</div>
 
 					<div class="row about-box">
-								<div class="col-lg-6">
+								<div class="col-lg-6 col-xs-7">
 									<div class="box-text-area">
-										<h4>興味のあるサービスをチェック</h4>
+										<h4 class="about-title">興味のあるサービスをチェック</h4>
 										<p>カテゴリーでの検索、サービス名の検索が可能です。
 											興味のあるサービスが見つかったらコメントやいいねで投稿者にお伝えください。
 										</p>
 									</div>
 								</div>
-								<div class="col-lg-6">
+								<div class="col-lg-6 col-xs-5">
 									<div class="box-img-area">
-										<%= image_tag 'search2.jpg', :size => '500x300' %>
+										<%= image_tag 'search2.jpg', class:"about-img" %>
 									</div>
 								</div>
 					</div>
 
 					<div class="row about-box">
-							<div class="col-lg-6">
+							<div class="col-lg-6 col-xs-5">
 								<div class="box-img-area">
-									<%= image_tag 'meet.jpg', :size => '500x300' %>
+									<%= image_tag 'meet.jpg', class:"about-img" %>
 								</div>
 							</div>
-							<div class="col-lg-6">
+							<div class="col-lg-6 col-xs-7">
 								<div class="box-text-area">
-									<h4>担当者と打ち合わせへ</h4>
+									<h4 class="about-title">担当者と打ち合わせへ</h4>
 									<p>コメントはご自身と投稿者のみの閲覧となっております。
 									コメントをした場合のみ担当者はあなたのユーザーページを訪れることができます。
 									良いビジネスパートナーに出会えうきっかけとなれば幸いです。
@@ -60,18 +60,18 @@
 
 			<div class="row top-about">
 				<h1 class="text-center top-title">ApoBridgeが目指すもの</h1>
-				<h3 class="text-center">Apobridgeはサービスの紹介者と求める方を繋げる架け橋になります</h3>
-					<p class="text-center">インターネットでモノやサービスが買える今の時代でも<br>
+				<h3 class="text-center top-subtitle">ApoBridgeはサービスの紹介者と求める方を繋げる架け橋になります</h3>
+					<p class="text-center top-introduction">インターネットでモノやサービスが買える今の時代でも<br>
 					人との繋がりや関係性を大切にしていきたいという紹介者と<br>
 					話を聞いてから検討をしたいという購入者が繋がるきっかけに。</p>
 			</div>
 
-				<h3 class="text-center">新規登録ですぐにご利用いただけます</h3>
+				<h3 class="text-center top-subtitle">新規登録ですぐにご利用いただけます</h3>
 				<p class="text-center">
 					<%= link_to '新規登録', new_user_registration_path, class:"top-signup-btn" %>
 				</p>
 				<div class="top-signin">
-					<h3 class="text-center">ログインはこちら</h3>
+					<h3 class="text-center top-subtitle">ログインはこちら</h3>
 					<p class="text-center">
 						<%= link_to 'ログイン', new_user_session_path, class:"top-signin-btn" %>
 					</p>
