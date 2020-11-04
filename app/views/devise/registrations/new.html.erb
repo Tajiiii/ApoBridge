@@ -8,32 +8,32 @@
 
           <div class="field">
             <%= f.label :名前 %><br />
-            <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"text-field" %>
+            <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder:" 例）大阪太郎 ", class:"text-field" %>
           </div>
 
           <div class="field">
             <%= f.label :会社名 %><br />
-            <%= f.text_field :company, autocomplete: "company", class:"text-field" %>
+            <%= f.text_field :company, autocomplete: "company", placeholder:" 例）株式会社〇〇〇 ", class:"text-field" %>
           </div>
 
           <div class="field">
             <%= f.label :郵便番号 %><br />
-            <%= f.text_field :postcode, autocomplete: "postcode", class:"text-field" %>
+            <%= f.text_field :postcode, autocomplete: "postcode", placeholder:" 例）5360000 ", class:"text-field" %>
           </div>
 
             <div class="field">
             <%= f.label :住所 %><br />
-            <%= f.text_field :address, autocomplete: "address", class:"text-field" %>
+            <%= f.text_field :address, autocomplete: "address", placeholder:" 例）大阪府大阪市北区堂島〇ー〇 ", class:"text-field" %>
           </div>
 
             <div class="field">
             <%= f.label :電話番号 %><br />
-            <%= f.text_field :phonenumber, autocomplete: "phonenumber", class:"text-field" %>
+            <%= f.text_field :phonenumber, autocomplete: "phonenumber", placeholder:" 例）09011112222 ", class:"text-field" %>
           </div>
 
           <div class="field">
             <%= f.label :メールアドレス %><br />
-            <%= f.email_field :email, autocomplete: "email", class:"text-field" %>
+            <%= f.email_field :email, autocomplete: "email", placeholder:" 例）test@test.com ", class:"text-field" %>
           </div>
 
           <div class="field">
@@ -41,12 +41,12 @@
             <% if @minimum_password_length %>
             <em>(<%= @minimum_password_length %> characters minimum)</em>
             <% end %><br />
-            <%= f.password_field :password, autocomplete: "new-password", class:"text-field" %>
+            <%= f.password_field :password, autocomplete: "new-password", placeholder:" 例）✕✕✕✕✕✕✕✕ ", class:"text-field" %>
           </div>
 
           <div class="field">
             <%= f.label :password_confirmation %><br />
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"text-field" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder:" 再度パスワードをご入力ください ", class:"text-field" %>
           </div>
 
           <div class="actions">
