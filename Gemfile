@@ -82,3 +82,7 @@ gem 'rails-i18n'
 
 gem 'minitest', group: :test
 gem 'minitest-reporters', group: :test
+
+group :development, :test do
+  gem 'rspec-rails'
+end
