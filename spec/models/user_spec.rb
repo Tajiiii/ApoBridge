@@ -1,17 +1,34 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  #pending "add some examples to (or delete) #{__FILE__}"
-  describe 'バリデーションのテスト' do
-    let(:user) { build(:user) }
-    subject { test_user.valid? }
-    context 'name' do
-      let(:test_user) { user }
-      it '空欄でないこと' do
-        test_user.name = ''
-        is_expected.to eq false;
-      end
+  describe 'バリデーションテスト' do
+    it '名前がなければ無効' do
+      @user = User.new(name: nil)
+      expect(@user.valid?).to eq(false)
     end
-end
+
+    it "メールアドレスがなければ無効" do
+      @user = User.new(email: nil)
+      expect(@user.valid?).to eq(false)
+    end
+
+    it "電話番号がなければ無効" do
+      @user = User.new(phonenumber: nil)
+      expect(@user.valid?).to eq(false)
+    end
+
+    it "郵便番号がなければ無効" do
+      @user = User.new(postcode: nil)
+      expect(@user.valid?).to eq(false)
+    end
+
+    it "住所がなければ無効" do
+      @user = User.new(address: nil)
+      expect(@user.valid?).to eq(false)
+    end
+
+    
+
+  end
 
 end
