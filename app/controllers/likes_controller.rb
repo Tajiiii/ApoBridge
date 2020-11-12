@@ -1,4 +1,5 @@
 class LikesController < ApplicationController
+	
 	def create
 		respond_to do |format|
 			format.html {redirect_to request.referrer}
