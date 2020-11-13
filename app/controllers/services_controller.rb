@@ -20,6 +20,10 @@ class ServicesController < ApplicationController
       @services = Service.all.page(params[:page]).per(9)
     end
     @categories = Category.all
+    #ransack
+    @q = Service.ransack(params[:q])
+    @services = @q.result(distinct: true)
+    @services = @q.result.page(params[:page]).per(9)
   end
 
   def show
