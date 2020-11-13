@@ -1,3 +1,4 @@
+<!-- ransck導入前
 <div class="row">
 	<div class="search-form">
 		<%= form_with url: "/services", method: :get, local: true do |f| %>
@@ -8,11 +9,25 @@
 		<% end %>
 	</div>
 </div>
+-->
 
 <div class="row">
 
 	<div class="col-lg-3">
-		<%= render "services/categories_sidebar", categories: @categories %>
+		<h3>検索</h3>
+		<%= search_form_for @q do |f| %>
+			<%= f.label :name, "サービス名" %>
+			<!-- "name_cont"はnameカラムの単語の一部分を含むものを検索するという意味 -->
+			<%= f.search_field :"name_cont" %>
+			<br>
+			<%= f.label :area, "対応エリア" %>
+			<%= f.search_field :"area_cont" %>
+			<br>
+			<%= f.label :category_id, "カテゴリー" %>
+			<%= f.collection_select :category_id_eq, @categories, :id, :name, :include_blank => '指定なし' %>
+			<br>
+			<%= f.submit "検索" %>
+		<% end %>
 	</div>
 
 	<div class="col-lg-8">

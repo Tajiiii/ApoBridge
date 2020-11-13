@@ -89,3 +89,5 @@ group :development, :test do
   gem 'capybara', '>= 2.15'
   gem 'faker'
 end
+
+gem 'ransack'
