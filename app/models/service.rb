@@ -51,4 +51,9 @@ class Service < ApplicationRecord
 		notification.save if notification.valid?
 	end
 
+	ransacker :likes_count do
+		query = '(SELECT COUNT(likes.service_id) FROM likes where likes.service_id = services.id GROUP BY likes.service_id)'
+		Arel.sql(query)
+	end
+
 end

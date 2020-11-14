@@ -27,9 +27,6 @@ Rails.application.routes.draw do
   resources :services, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
     resource :likes, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
-    collection do
-      match 'search' => 'services#search', via: [:get, :post]
-    end
   end
   resources :categories, only: [:show]
 
