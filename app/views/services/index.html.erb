@@ -33,7 +33,7 @@
 				<%= f.label :category_id, "並べ替え" %>
 			</div>
 			<%= f.select( :sorts, { '指定しない': 'id desc', 'いいねの多い順': 'likes_count desc', '出品の古い順': 'updated_at asc', '出品の新しい順': 'updated_at desc' } , { selected: params[:q][:sorts] }, class:"search-field" ) %>
-			<%= f.submit "検索" %>
+			<%= f.submit "検索", class:"search-field" %>
 		<% end %>
 	</div>
 
