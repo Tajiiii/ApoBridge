@@ -14,23 +14,30 @@
 <div class="row">
 
 	<div class="col-lg-3">
-		<h3>検索</h3>
-		<%= search_form_for @q do |f| %>
-			<%= f.label :name, "サービス名" %>
+		<h3>サービスを探す</h3>
+		<%= search_form_for @search, url: services_path do |f| %>
+			<div class= "search-label">
+				<%= f.label :name, "サービス名" %>
+			</div>
 			<!-- "name_cont"はnameカラムの単語の一部分を含むものを検索するという意味 -->
-			<%= f.search_field :"name_cont" %>
-			<br>
-			<%= f.label :area, "対応エリア" %>
-			<%= f.search_field :"area_cont" %>
-			<br>
-			<%= f.label :category_id, "カテゴリー" %>
-			<%= f.collection_select :category_id_eq, @categories, :id, :name, :include_blank => '指定なし' %>
-			<br>
+			<%= f.search_field :"name_cont", placeholder:" 例）ホームページ作成", class:"search-field" %>
+			<div class= "search-label">
+				<%= f.label :area, "対応エリア" %>
+			</div>
+			<%= f.search_field :"area_cont", placeholder:" 例）大阪", class:"search-field" %>
+			<div class="search-label">
+				<%= f.label :category_id, "カテゴリー" %>
+			</div>
+			<%= f.collection_select :category_id_eq, @categories, :id, :name, {prompt: "指定しない"} ,{:class => "search-field"} %>
+			<div class="search-label">
+				<%= f.label :category_id, "並べ替え" %>
+			</div>
+			<%= f.select( :sorts, { '指定しない': 'id desc', 'いいねの多い順': 'likes_count desc', '出品の古い順': 'updated_at asc', '出品の新しい順': 'updated_at desc' } , { selected: params[:q][:sorts] }, class:"search-field" ) %>
 			<%= f.submit "検索" %>
 		<% end %>
 	</div>
 
-	<div class="col-lg-8">
+	<div class="col-lg-9">
 		<div class="service-index">
 			<h3>サービス一覧</h3>
 
@@ -38,9 +45,9 @@
 
 				<tr class="service-box">
 					<% @services.each do |service| %>
-						<td class="service" style="margin-left: 10px; margin-bottom: 20px; text-align: center;">
+						<td class="post-service" style="margin-left: 20px; margin-bottom: 20px; text-align: center;">
 								<%= link_to service_path(service) do %>
-									<%= attachment_image_tag service, :image, size: "200x200", fallback: "noimage.jpg", size: "200x200" %><br>
+									<%= attachment_image_tag service, :image, size: "240x240", fallback: "noimage.jpg", size: "240x240" %><br>
 									<%= service.name %><br>
 									<%= service.category.name %><br>
 								<% end %>

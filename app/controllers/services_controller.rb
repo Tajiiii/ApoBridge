@@ -12,18 +12,30 @@ class ServicesController < ApplicationController
     @like = Like.new(user_id: @current_user_id, service_id: params[:service_id])
     @service = Service.find_by(id: @like.service_id)
     @like_count = Like.where(service_id: params[:service_id]).count
-    if params[:name]
+    #if params[:name]
       #検索機能（入力した文字列に部分一致するデータ検索）
-      @services = Service.where("name LIKE ?", "%#{params[:name]}%")
-      @services = @services.page(params[:page]).per(9)
-    else
-      @services = Service.all.page(params[:page]).per(9)
-    end
+      #@services = Service.where("name LIKE ?", "%#{params[:name]}%")
+      #@services = @services.page(params[:page]).per(9)
+    #else
+      #@services = Service.all.page(params[:page]).per(9)
+    #end
     @categories = Category.all
     #ransack
-    @q = Service.ransack(params[:q])
-    @services = @q.result(distinct: true)
-    @services = @q.result.page(params[:page]).per(9)
+    #@q = Service.ransack(params[:q])
+    #@services = @q.result(distinct: true)
+    #@services = @q.result.page(params[:page]).per(9)
+    if params[:q].present?
+    # 検索フォームからアクセスした時の処理
+      @search = Service.ransack(search_params)
+      @q = Service.ransack(params[:q])
+      @services = @q.result(distinct: true)
+      @services = @q.result.page(params[:page]).per(9)
+    else
+    # 検索フォーム以外からアクセスした時の処理
+      params[:q] = { sorts: 'id desc' }
+      @search = Service.ransack()
+      @services = Service.all.page(params[:page]).per(9)
+    end
   end
 
   def show
@@ -77,6 +89,10 @@ class ServicesController < ApplicationController
   private
   def service_params
   	params.require(:service).permit(:name, :category_id, :area, :price, :introduction, :user_id, :image)
+  end
+
+  def search_params
+    params.require(:q).permit(:name, :category_id, :area, :price, :introduction, :user_id, :image)
   end
 end
 
