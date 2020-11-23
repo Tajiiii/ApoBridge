@@ -13,6 +13,9 @@ class User < ApplicationRecord
   validates :phonenumber, numericality: {only_integer: true}
   validates :postcode, length: {is: 7}, numericality: {only_integer: true}
 
+  has_many :user_rooms
+  has_many :chats
+
   def liked_by?(service_id)
     likes.where(service_id: service_id).exists?
   end
