@@ -35,4 +35,7 @@ Rails.application.routes.draw do
   resources :notifications, only: [:index, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  get 'chat/:id' => 'chats#show', as: 'chat'
+  resources :chats, only: [:create]
+
 end

@@ -1,0 +1,21 @@
+<%= form_for (@chat) do |f| %>
+    <%= f.text_field :message %>
+    <%= f.hidden_field :room_id %>
+    <%= f.submit '送信する' %>
+<% end %>
+<table class="table">
+      <thead>
+        <tr>
+          <td>投稿者名</td>
+          <td>投稿内容</td>
+        </tr>
+      </thead>
+      <% @chats.each do |chat| %>
+          <tbody>
+            <tr>
+              <td><%= chat.user.name %></td>
+              <td><%= chat.message %></td>
+            </tr>
+          </tbody>
+      <% end %>
+</table>
